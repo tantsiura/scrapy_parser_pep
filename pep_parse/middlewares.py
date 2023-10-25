@@ -1,5 +1,6 @@
 from scrapy import signals
 
+
 class PepParseSpiderMiddleware:
 
     @classmethod
@@ -24,7 +25,6 @@ class PepParseSpiderMiddleware:
 
     def spider_opened(self, spider):
         spider.logger.info('Spider opened: %s' % spider.name)
-
 
 
 class PepParseDownloaderMiddleware:

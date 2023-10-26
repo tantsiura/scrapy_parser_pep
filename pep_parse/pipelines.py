@@ -15,12 +15,12 @@ class PepParsePipeline:
     def process_item(self, item, spider):
         try:
             if "status" not in item:
-                raise DropItem
-        except DropItem:
-            logging.error("Не полные данные: нет ключа 'status'")
+                raise DropItem("Не полные данные: нет ключа 'status'")
+        except DropItem as e:
+            logging.error(e)
         else:
             key = item["status"]
-            self.status[key] = self.status.get(key, 0) + 1
+            self.status[key] += 1
         finally:
             return item
 
